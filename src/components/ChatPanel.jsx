@@ -60,6 +60,11 @@ export default function ChatPanel() {
               return updated
             })
           }
+          else if (event.type === "error") {
+            setMessages(prev => prev.map((m, i) =>
+              i === prev.length - 1 ? { ...m, content: event.message, streaming: false } : m
+            ))
+          }
         }
       }
     } finally {
